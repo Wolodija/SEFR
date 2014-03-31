@@ -38,4 +38,4 @@ I. Kompresja i dekomresja
 	Po dœóch iteracjach, otrzymujemy już obraz który jest w porządku
 
 
-II. Watermarking
+II. Watermarking 
