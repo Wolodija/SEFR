@@ -14,6 +14,7 @@ def cli_progress_test(val, max_val, bar_length=50):
 	sys.stdout.flush()
 #Funkcja usredniajaca czworki pikseli
 def skaluj(D):
+	D = numpy.matrix(D)
 	D_ = []
 	for i in range(int(D.shape[0]/2)):
 		D_.append([])
@@ -41,16 +42,19 @@ def domainBlocks(A, blockSize, delta):
 
 #Funkcja porownojaca rangeBlock i DomainBlock
 def porownaj(R,D):
+	R = numpy.matrix(R);
+	D = numpy.matrix(D);
 	R_ = R.mean();
 	D_ = D.mean();
 	s = (numpy.array(R-R_)*numpy.array(D-D_)).sum() / (numpy.array(D-D_)*numpy.array(D-D_)).sum()
-	s = int((s + 16)*4)/4 - 16
+	s = int((s)*4)/4
 	o = R_ - s*D_;
-	o = int((o + 2048)/16) * 16 - 2048
+	o = int((o)/16) * 16
 	E = numpy.linalg.norm(R*(s*D+o))
 	return [s, o, E]
 
 def przeksztalcenie(R, typ):
+	R = numpy.matrix(R)
 	if(typ == 0):
 		return R;
 	elif typ == 1:
@@ -96,15 +100,24 @@ def usun2LSB(R):
 	return [R, wiadomosc]
 
 def Kompresuj(R, D, delta):
+	im= Image.open('lena.pgm'); 									#Odczytanie obrazu
+	A = usun2LSB(numpy.matrix(im.getdata()).reshape(im.size))[0]
 	stat = [[[[-1, -1], [-1, -1, -1]]] * len(R) for i in range(len(R))]
 	for counter in range(4):
 		if(counter == 0):
+			#0-R/2 0-R/2 D/2-D D/2-D
 			ranges = [range(0, int(len(R)/2)), range(0, int(len(R)/2)), range(int(len(D)/2), len(D)), range(int(len(D)/2), len(D)), -int(len(D)/2), -int(len(D)/2)]
 		elif(counter == 1):
+			#R/2-R 0-R/2
+			#R/2-R R/2-R 0-D/2 0-D/2
 			ranges = [range(int(len(R)/2), len(R)), range(int(len(R)/2), len(R)), range(0, int(len(D)/2)), range(0, int(len(D)/2)), 0, 0]
 		elif(counter == 2):
+			#0-R/2 R/2-R
+			#0-R/2 R/2-R D/2-D 0-D/2
 			ranges = [range(0, int(len(R)/2)), range(int(len(R)/2), len(R)), range(int(len(D)/2), len(D)), range(0, int(len(D)/2)), -int(len(D)/2), 0]
 		elif(counter == 3):
+			#R/2-R R/2-R
+			#R/2-R 0-R/2 0-D/2 D/2-D
 			ranges = [range(int(len(R)/2), len(R)), range(0, int(len(R)/2)), range(0, int(len(D)/2)), range(int(len(D)/2), len(D)), 0, -int(len(D)/2)]
 		for i in ranges[0]:
 			for j in ranges[1]:
@@ -116,7 +129,9 @@ def Kompresuj(R, D, delta):
 							tmp = porownaj(R[i][j], przeksztalcenie(D[a][b], c))
 							if(stat[i][j][1][2] == -1 or stat[i][j][1][2] > tmp[2]):#jesli nie ustawiona lub mniejszy blad, to podmien wspolczynnniki
 								tmp.append(c)
-								stat[i][j] = [[(a+ranges[4])*delta,(b+ranges[5])*delta], tmp];
+								x = (a+ranges[4])*delta
+								y = (b+ranges[5])*delta
+								stat[i][j] = [[x,y], tmp];
 	cli_progress_test(1, 1);
 	print("");
 	return stat;
@@ -141,6 +156,9 @@ def Dekompresuj(size, stat):
 	cli_progress_test(1, 1);
 	print("");
 	return(G);
+
+def DekompresujPojedynczy(R2, s, o):
+	return numpy.matrix(R2 * s + o)
 
 def getWspDCT(M):
 	T = numpy.matrix([[.3536, .3536, .3536, .3536, .3536, .3536, .3536, .3536],
@@ -205,7 +223,68 @@ def kodujWspDCT(wsp):
 		#ret += Huffman(wsp[i])
 	ret += '0000000000000000000000000000'
 	return ret[0:40];
-	
+
+def dekodujWspDCT(wsp, ile):
+	ret = []
+	wsp += '0'*ile*2
+	print(wsp)
+	for i in range(ile):
+		if wsp[0:2] == '00':
+			wsp=wsp[2:]
+			dodaj = 0
+			ile = 0;
+		if wsp[0:3] == '010':
+			wsp=wsp[3:]
+			dodaj = 1
+			ile = 1;
+		if wsp[0:3] == '011':
+			wsp=wsp[3:]
+			dodaj = 3
+			ile = 2;
+		if wsp[0:3] == '100':
+			wsp=wsp[3:]
+			dodaj = 7
+			ile = 3;
+		if wsp[0:3] == '101':
+			wsp=wsp[3:]
+			dodaj = 15
+			ile = 4;
+		if wsp[0:3] == '110':
+			wsp=wsp[3:]
+			dodaj = 31
+			ile = 5;
+		if wsp[0:4] == '1110':
+			wsp=wsp[4:]
+			dodaj = 63
+			ile = 6;
+		if wsp[0:5] == '11110':
+			wsp=wsp[5:]
+			dodaj = 127
+			ile = 7;
+		if wsp[0:6] == '111110':
+			wsp=wsp[6:]
+			dodaj = 255
+			ile = 8;
+		if wsp[0:7] == '1111110':
+			wsp=wsp[7:]
+			dodaj = 511
+			ile = 9;
+		if wsp[0:8] == '11111110':
+			wsp=wsp[8:]
+			dodaj = 1023
+			ile = 10;
+		if wsp[0:9] == '111111110':
+			wsp=wsp[9:]
+			dodaj = 2047
+			ile = 11;
+			
+		liczba = int(wsp[1:1+ile], 2);
+		if(wsp[0:1] == '0'):
+			liczba = liczba + dodaj;
+		else:
+			liczba = -liczba - dodaj
+		print(liczba)
+	return ret
 def kodujDCTJPEG(R):
 	wsp = [[None] * len(R) for i in range(len(R))]
 	for i in range(len(R)):
@@ -305,6 +384,26 @@ def sprawdzmd5Bloku(Blok):
 	tmp = usun2LSB(Blok);
 	Blok = zapiszWiadomosc(tmp[0], tmp[1][0:112] + '0'*16)
 	if md5Bloku(Blok) == tmp[1][112: 128]:
-		return 1
+		return [1, tmp[0], tmp[1]]
 	else:
-		return 0
+		return [-1, tmp[0], tmp[1]]
+
+def binariaToDec(binary, ile, znak = 1):
+	ret = []
+	for i in range(len(ile)):
+		if ile[i][1]:
+			if binary[0:1] == '1':
+				binary = '-' + binary[1:];
+			else:
+				binary = '+' + binary[1:];
+		ret.append(int(binary[0:ile[i][0]], 2))
+		binary = binary[ile[i][0]:]
+	return ret
+
+def intTobin(liczba, bity, znak=1):
+	liczba = int(liczba)
+	if(znak):
+		ret = format(liczba, '+0%ib' %bity)
+		return ret.replace('+','0').replace('-', '1');
+	else:
+		return format(liczba, '0%ib' %bity)
