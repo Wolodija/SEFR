@@ -118,7 +118,6 @@ for counter in range(0, 4):
 			if(len(binary[x][y])) > 72:
 				print("b");
 				sys.exit()
-		sys.exit();
 
 
 	#Mapowanie bloków C
@@ -137,19 +136,6 @@ for i in range(len(binary)):
 		R[i][j] = zapiszWiadomosc(R[i][j], binary[i][j])
 		R[i][j] = zapiszWiadomosc(R[i][j], binary[i][j] + md5Bloku(R[i][j]))
 
-"""
-for i in range(len(stat)):
-	for j in range(len(stat)):
-		stat[i][j][0][0] = int(binary[i][j][0:7], 2);
-		stat[i][j][0][1] = int(binary[i][j][7:14], 2);
-		stat[i][j][1][0] = int(binary[i][j][14:21], 2)/8 - 8;
-		stat[i][j][1][1] = int(binary[i][j][21:29], 2)*8 - 1024;
-		stat[i][j][1][3] = int(binary[i][j][29:32], 2);
-"""
-A_map = [getMapping(Maper, int(len(R)/2)), getMapping(Maper, int(len(R)/2)), getMapping(Maper, int(len(R)/2)), getMapping(Maper, int(len(R)/2))]
-B_map = [getMapping(Maper, int(len(B)/2)), getMapping(Maper, int(len(B)/2)), getMapping(Maper, int(len(B)/2)), getMapping(Maper, int(len(B)/2))]
-C_map = [getMapping(Maper, int(len(C)/2)), getMapping(Maper, int(len(C)/2)), getMapping(Maper, int(len(C)/2)), getMapping(Maper, int(len(C)/2))]
-
 H = numpy.matrix(im.getdata()).reshape(im.size)
 for i in range(len(R)):
 	for j in range(len(R)):
@@ -157,7 +143,7 @@ for i in range(len(R)):
 #G = Dekompresuj(im.size, stat);
 #print(G)
 H = Image.fromarray(numpy.uint8(numpy.matrix(H)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
-#H.show()
+H.show()
 H.save("lenaWatermarked.pgm")
 #print(A.shape)
 #im = Image.new('L', [16, 16], 0)
