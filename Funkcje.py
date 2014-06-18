@@ -905,7 +905,9 @@ def getMapping(R, Size, password = None):
 		math.floor
 	"""
 	if(password):
-		K=password[0:10];
+		K=[]#password[0:10];
+		for i in password:
+			K.append(ord(i));
 	else:
 		R = numpy.array(R).reshape(-1)
 		K = R[0:10];

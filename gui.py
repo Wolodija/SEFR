@@ -110,8 +110,9 @@ class SEFR_GUI(QtGui.QMainWindow):
 znaków wodnych do obrazka,\n\
 a także weryfikowania ich poprawności \n\
 i ew. odzyskiwania danych ze znaku wodnego\n\n\
-1. Wybierz plik który chcesz przetworzyć\n\
-2. Z menu akcje wybierz "Dodaj znak wodny"', self);
+1. Wybierz co chcesz zrobić\n\
+2. Wskaż plik do przetworzenia,\n\
+    a następnie po zakończonej operacji, miejsce przeznaczenia', self);
 		label1.move(20, 80)
 		label1.adjustSize()
 		
@@ -171,6 +172,7 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 					"p" : QtGui.QLabel('Przekształcenie')}
 		dctLbl = QtGui.QLabel("Długość DCT");
 		hashLbl = QtGui.QLabel("Długość hasha");
+		passLbl = QtGui.QLabel("Hasło");
 		
 		#Slidery
 		try:
@@ -197,6 +199,8 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 			self.fraktalSuma.setDisabled(1)
 			self.fraktalPrzk = QtGui.QLineEdit('3', self)
 			self.fraktalPrzk.setDisabled(1)
+			self.haslo = QtGui.QLineEdit('Domyslne haslo', self)
+			self.haslo.textChanged.connect(self.hasloZmienione)
 			
 			for sldr in self.fraktalSldrs:
 				self.fraktalSldrs[sldr].setFocusPolicy(QtCore.Qt.NoFocus)
@@ -224,22 +228,25 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		
 		grid.addWidget(comboBox, 1,0);
 		
-		grid.addWidget(fraktalLbls["podpis"], 3,0)
-		grid.addWidget(self.fraktalSuma, 3,1)
-		grid.addWidget(fraktalLbls["x"], 4,0)
-		grid.addWidget(self.fraktalSldrs["x"], 4,1)
-		grid.addWidget(self.fraktalSpnbs["x"], 4,2)
-		grid.addWidget(fraktalLbls["y"], 5,0)
-		grid.addWidget(self.fraktalSldrs["y"], 5,1)
-		grid.addWidget(self.fraktalSpnbs["y"], 5,2)
-		grid.addWidget(fraktalLbls["s"], 6,0)
-		grid.addWidget(self.fraktalSldrs["s"], 6,1)
-		grid.addWidget(self.fraktalSpnbs["s"], 6,2)
-		grid.addWidget(fraktalLbls["o"], 7,0)
-		grid.addWidget(self.fraktalSldrs["o"], 7,1)
-		grid.addWidget(self.fraktalSpnbs["o"], 7,2)
-		grid.addWidget(fraktalLbls["p"], 8,0)
-		grid.addWidget(self.fraktalPrzk, 8,1)
+		grid.addWidget(passLbl, 3,0)
+		grid.addWidget(self.haslo, 3,1)
+		
+		grid.addWidget(fraktalLbls["podpis"], 4,0)
+		grid.addWidget(self.fraktalSuma, 4,1)
+		grid.addWidget(fraktalLbls["x"], 5,0)
+		grid.addWidget(self.fraktalSldrs["x"], 5,1)
+		grid.addWidget(self.fraktalSpnbs["x"], 5,2)
+		grid.addWidget(fraktalLbls["y"], 6,0)
+		grid.addWidget(self.fraktalSldrs["y"], 6,1)
+		grid.addWidget(self.fraktalSpnbs["y"], 6,2)
+		grid.addWidget(fraktalLbls["s"], 7,0)
+		grid.addWidget(self.fraktalSldrs["s"], 7,1)
+		grid.addWidget(self.fraktalSpnbs["s"], 7,2)
+		grid.addWidget(fraktalLbls["o"], 8,0)
+		grid.addWidget(self.fraktalSldrs["o"], 8,1)
+		grid.addWidget(self.fraktalSpnbs["o"], 8,2)
+		grid.addWidget(fraktalLbls["p"], 9,0)
+		grid.addWidget(self.fraktalPrzk, 9,1)
 		
 		#Slidery
 		try:
@@ -326,7 +333,8 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 							"o":8},
 				"DCT1":40,
 				"DCT2":40,
-				"hash":16,}}],
+				"hash":16,},
+				"haslo" : "Domysle haslo"}],
 				"profil":0}
 			pickle.dump(config, open("config.cfg", "wb"))
 			self.getConfig()
@@ -372,6 +380,12 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		self.hashSpnb.setValue(value)
 		self.bitSum.setText(str(self.przeliczBity()))
 		
+	def hasloZmienione(self, value):
+		"""
+		zmien wartosc hasha
+		"""
+		self.config["profile"][self.config["profil"]]["haslo"] = value
+		
 	def fractalPrzelicz(self):
 		"""
 		przelicz sume bitow na kodowanie fraktalne
@@ -399,6 +413,7 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		self.hashSldr.setValue(self.config["profile"][identyfikator]["bity"]["hash"])
 		self.dctSpnb.setValue(self.config["profile"][identyfikator]["bity"]["DCT1"])
 		self.hashSpnb.setValue(self.config["profile"][identyfikator]["bity"]["hash"])
+		self.haslo.setText(self.config["profile"][identyfikator]["haslo"])
 		self.bitSum.setText(str(self.przeliczBity()))
 	
 	def print_(self, tekst):
@@ -512,20 +527,20 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		Maper = [124, 112, 18, 199, 255, 10, 123, 32, 96, 111, 67, 56, 43, 22, 34, 89, 102, 123, 11, 2, 5, 7, 192, 123, 253]
 		#Tablice mapowania 4 wpisy w każdym wpis [i][j] w którym są współrzędne punktu na który mapujemy
 		#I tak np. R[0][0] mapujemy na A_map[0][0][0]
-		A_map = [getMapping(Maper[0:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[1:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[2:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[3:], [int(R_size[0]/2), int(R_size[1]/2)])]
+		A_map = [getMapping(Maper[0:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[1:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[2:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[3:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30)]
 				
-		B_map = [getMapping(Maper[4:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[5:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[6:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[7:], [int(R_size[0]/2), int(R_size[1]/2)])]
+		B_map = [getMapping(Maper[4:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[5:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[6:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[7:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30)]
 				
-		C_map = [getMapping(Maper[8:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[9:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[10:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[11:], [int(R_size[0]/2), int(R_size[1]/2)])]
+		C_map = [getMapping(Maper[8:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[9:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[10:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[11:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30)]
 		self.print_("Zamiana wspolczynnikow na wartosci binarne")
 		wsp = [[None] * R_size[1] for i in range(R_size[0])]
 		binwsp = [[''] * R_size[1] for i in range(R_size[0])]
@@ -755,22 +770,23 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		#Level2
 
 		Maper = [124, 112, 18, 199, 255, 10, 123, 32, 96, 111, 67, 56, 43, 22, 34, 89, 102, 123, 11, 2, 5, 7, 192, 123, 253]
+		
 		#Tablice mapowania 4 wpisy w każdym wpis [i][j] w którym są współrzędne punktu na który mapujemy
 		#I tak np. R[0][0] mapujemy na A_map[0][0][0]
-		A_map = [getMapping(Maper[0:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[1:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[2:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[3:], [int(R_size[0]/2), int(R_size[1]/2)])]
+		A_map = [getMapping(Maper[0:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[1:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[2:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[3:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30)]
 				
-		B_map = [getMapping(Maper[4:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[5:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[6:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[7:], [int(R_size[0]/2), int(R_size[1]/2)])]
+		B_map = [getMapping(Maper[4:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[5:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[6:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[7:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30)]
 				
-		C_map = [getMapping(Maper[8:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[9:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[10:], [int(R_size[0]/2), int(R_size[1]/2)]), 
-				getMapping(Maper[11:], [int(R_size[0]/2), int(R_size[1]/2)])]
+		C_map = [getMapping(Maper[8:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[9:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[10:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30), 
+				getMapping(Maper[11:], [int(R_size[0]/2), int(R_size[1]/2)], str(self.config["profile"][self.config["profil"]]["haslo"]) * 30)]
 
 		for counter in range(0, 4):
 			#Ranges, to będą współczynniki przydatne prz pętlach
@@ -1118,4 +1134,4 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		
 		self.plikOtworz = "";
 		self.plikZapisz = "";
-#		print(str(self.statystyki));
+		print(str(self.statystyki));
