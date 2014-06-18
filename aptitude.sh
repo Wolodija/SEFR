@@ -9,4 +9,4 @@ unzip Pillow-2.4.0.zip
 cd Pillow-2.4.0
 sudo python3 setup.py install
 cd ../
-rmdir Pillow-2.4.0
+sudo rm -rf Pillow-2.4.0*
