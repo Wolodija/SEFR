@@ -1,0 +1,650 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Funkcje</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Funkcje</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/media/sda2/Dokumenty/Studia/Semestr_4/Telekomunikacja Cyfrowa/Projekt/moje/Python/Python3.3/GUI/Funkcje.py">/media/sda2/Dokumenty/Studia/Semestr_4/Telekomunikacja Cyfrowa/Projekt/moje/Python/Python3.3/GUI/Funkcje.py</a></font></td></tr></table>
+    <p><tt>#TODO:<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uzupełnić "dokumentacje"<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dodać&nbsp;komentarze&nbsp;w&nbsp;funkcjach</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="PIL.Image.html">PIL.Image</a><br>
+<a href="hashlib.html">hashlib</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="pickle.html">pickle</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-DekompresujPojedynczy"><strong>DekompresujPojedynczy</strong></a>(R2, s, o)</dt><dd><tt>Funkcja&nbsp;DekompresujPojedynczy<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dekompresja&nbsp;pojedyńczego&nbsp;bloku<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;R2&nbsp;macierz&nbsp;podlegająca&nbsp;przekształceniu<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;&nbsp;scale&nbsp;parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o&nbsp;&nbsp;luminance&nbsp;offset<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;przeksztalcona&nbsp;macierz<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix</tt></dd></dl>
+ <dl><dt><a name="-Huffman"><strong>Huffman</strong></a>(liczba)</dt><dd><tt>Funkcja&nbsp;Huffman<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kodowanie&nbsp;huffmana&nbsp;z&nbsp;prawdopodobieństwami&nbsp;obliczonymi&nbsp;dla&nbsp;DCT&nbsp;JPG<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;liczba&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liczba&nbsp;do&nbsp;zakodowania<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zakodowana&nbsp;liczba&nbsp;w&nbsp;postaci&nbsp;binarnej<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format</tt></dd></dl>
+ <dl><dt><a name="-Kompresuj"><strong>Kompresuj</strong></a>(R, D, delta, apka)</dt><dd><tt>Funkcja&nbsp;Kompresuj<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;przeprowadzająca&nbsp;kompresję fraktalną&nbsp;macierzy&nbsp;z&nbsp;listy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwuwymiarowej&nbsp;R&nbsp;o&nbsp;rozmiarze&nbsp;i,j&nbsp;opierając&nbsp;się na<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;przekształceniu&nbsp;macierzy&nbsp;z&nbsp;lsty&nbsp;dwuwymiarowej&nbsp;D&nbsp;o&nbsp;rozmiarze&nbsp;x,y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwraca&nbsp;listę&nbsp;z&nbsp;optymalnymi&nbsp;przekszałceniami&nbsp;dla&nbsp;najoptymalniejszej<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;macierzy&nbsp;D<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R[][]&nbsp;macierz&nbsp;R<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D[][]&nbsp;macierz&nbsp;D<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delta&nbsp;wartość&nbsp;delty(deprecated)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QtGui.QmainWindow&nbsp;apka&nbsp;&nbsp;uchwyt&nbsp;do&nbsp;aplikacji<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apka.progress&nbsp;&nbsp;&nbsp;pasek&nbsp;postepu&nbsp;kompresji<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apk.print&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nie&nbsp;wiem&nbsp;na&nbsp;co&nbsp;to&nbsp;komu&nbsp;i&nbsp;po&nbsp;co<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wspolrzedne&nbsp;najbardziej&nbsp;podobnej&nbsp;macierzy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;a&nbsp;&nbsp;&nbsp;x<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;b&nbsp;&nbsp;&nbsp;y<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;funkcji&nbsp;porownaj&nbsp;oraz&nbsp;numer&nbsp;przekszt.<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wyrzucić delte<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list.append<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;porownaj<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;przeksztalcenie<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apka.progress<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apka.print_</tt></dd></dl>
+ <dl><dt><a name="-binariaToDec"><strong>binariaToDec</strong></a>(binary, ile, znak<font color="#909090">=1</font>)</dt><dd><tt>Funkcja&nbsp;binariaToDec<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Konwersja&nbsp;str&nbsp;do&nbsp;listy&nbsp;int'ów<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;binary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tekst&nbsp;do&nbsp;zdekodowania<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;ile[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lista&nbsp;dwuwymiarowa&nbsp;zawierajaca&nbsp;informacje&nbsp;o&nbsp;pożadanych<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int'ach.&nbsp;Pierwszy&nbsp;wymiar&nbsp;oznacza&nbsp;liczbę,&nbsp;drugi&nbsp;wymiar&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;lista&nbsp;dwuelementowa,&nbsp;gdzie&nbsp;pierwszy&nbsp;element&nbsp;oznacza<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ilość&nbsp;bitów,&nbsp;które&nbsp;konwertujemy,&nbsp;a&nbsp;drugi&nbsp;czy&nbsp;oczekujemy&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;znaku.&nbsp;Kolejność&nbsp;pierwszego&nbsp;wymiaru&nbsp;jest&nbsp;ważna<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;znak&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deprecated<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Przykład:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-binariaToDec">binariaToDec</a>('11000101101101010011',&nbsp;[[10,&nbsp;0],&nbsp;[10,&nbsp;1]]<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[]&nbsp;&nbsp;&nbsp;lista&nbsp;int'ów&nbsp;odczytanych&nbsp;z&nbsp;danego&nbsp;ciągu&nbsp;binarnego<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wywalić argument&nbsp;znak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list.append</tt></dd></dl>
+ <dl><dt><a name="-cli_progress_test"><strong>cli_progress_test</strong></a>(val, max_val, bar_length<font color="#909090">=50</font>)</dt><dd><tt>Funkcja&nbsp;cli_progress_test<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;odpowiedzialna&nbsp;za&nbsp;wyświetlanie&nbsp;paska&nbsp;postępu&nbsp;w&nbsp;konsoli<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;val&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aktualna&nbsp;wartość<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;max_val&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maksymalna&nbsp;wartość<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;bar_length&nbsp;&nbsp;szerokość&nbsp;paska&nbsp;postępu&nbsp;(domyślnie&nbsp;50)<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pasek&nbsp;postępu<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brak<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;round<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.stdout.write<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.stdout.flush()</tt></dd></dl>
+ <dl><dt><a name="-dekodujDCT"><strong>dekodujDCT</strong></a>(M)</dt><dd><tt>Funkcja&nbsp;dekodujDCT<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;dekodująca&nbsp;DCT&nbsp;na&nbsp;podstawie&nbsp;pierwszych&nbsp;6&nbsp;współczynników<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[]&nbsp;&nbsp;&nbsp;lista&nbsp;współczynników&nbsp;w&nbsp;kolejności&nbsp;zig-zag<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;zdekodowana&nbsp;ze&nbsp;współczynników&nbsp;DCT&nbsp;macierz<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.multiply<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix.round</tt></dd></dl>
+ <dl><dt><a name="-dekodujWspDCT"><strong>dekodujWspDCT</strong></a>(wsp, ile, apka)</dt><dd><tt>Funkcja&nbsp;dekodujWspDCT<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;funkca&nbsp;dekodująca&nbsp;współczynniki&nbsp;DCT&nbsp;i&nbsp;zwracajaca&nbsp;ich&nbsp;listę<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zwykła&nbsp;konwersja&nbsp;liczb&nbsp;do&nbsp;postaci&nbsp;binarnej<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;wsp[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;współczynniki&nbsp;do&nbsp;zakodowania<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ile[]&nbsp;&nbsp;&nbsp;zastosowanie&nbsp;w&nbsp;Huffmanie<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QtGui.QmainWindow&nbsp;apka&nbsp;&nbsp;uchwyt&nbsp;do&nbsp;aplikacji<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;postać&nbsp;binarna<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;usunąć&nbsp;komentarze,&nbsp;być może&nbsp;uzależnić Huffmana<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;od&nbsp;jakiegoś parametru<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;Zastanowić się czy&nbsp;potrzebny&nbsp;jest&nbsp;uchwyt&nbsp;apka<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;Zastanowić&nbsp;się&nbsp;po&nbsp;co&nbsp;był&nbsp;argument&nbsp;ile<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;policzWspolczynnikiDCT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;binariaToDec</tt></dd></dl>
+ <dl><dt><a name="-domainBlocks"><strong>domainBlocks</strong></a>(A, blockSize, delta, apka)</dt><dd><tt>Funkcja&nbsp;domainBlocks<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;dzieląca&nbsp;macierz&nbsp;A&nbsp;na&nbsp;podmacierze&nbsp;o&nbsp;podanym&nbsp;rozmiarze<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nachodzące&nbsp;na&nbsp;siebie,&nbsp;o&nbsp;pewnym&nbsp;odstępie&nbsp;początków&nbsp;tych&nbsp;macierzy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwraca&nbsp;listę&nbsp;dwuwymiarową&nbsp;podmacierzy<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;macierz&nbsp;do&nbsp;podzielenia<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blockSize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rozmiar&nbsp;bloku<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wartość&nbsp;odstępu<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QtGui.QmainWindow&nbsp;apka&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uchwyt&nbsp;do&nbsp;aplikacji<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apka.progress&nbsp;&nbsp;&nbsp;pasek&nbsp;postepu<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;list[][]&nbsp;&nbsp;&nbsp;dwuwymiarowa&nbsp;lista<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list.append<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apka.progress</tt></dd></dl>
+ <dl><dt><a name="-getMapping"><strong>getMapping</strong></a>(R, Size, password<font color="#909090">=None</font>)</dt><dd><tt>Funkcja&nbsp;getMapping<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obliczenie&nbsp;rozkładu&nbsp;mapowania&nbsp;na&nbsp;podstawie&nbsp;bloku&nbsp;lub&nbsp;hasła,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zwrócenie&nbsp;dwuwymiarowej&nbsp;listy&nbsp;o&nbsp;rozmiarze&nbsp;Size,Size<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ze&nbsp;współrzędnymi,&nbsp;na&nbsp;które&nbsp;mapować<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blok/lista-hasło<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rozmiar&nbsp;bloku,&nbsp;na&nbsp;jaki&nbsp;chcemy&nbsp;mapować<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;password&nbsp;&nbsp;&nbsp;hasło<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list[][]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwuwymiarowa&nbsp;lista&nbsp;o&nbsp;rozmiarze&nbsp;Size,Size<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ze&nbsp;współrzędnymi,&nbsp;na&nbsp;które&nbsp;mapować<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.array.reshape<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list.append<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.join<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;math.pow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;math.floor</tt></dd></dl>
+ <dl><dt><a name="-getWspDCT"><strong>getWspDCT</strong></a>(M)</dt><dd><tt>Funkcja&nbsp;getWspDCT<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;funkcja&nbsp;obliczająca&nbsp;współczynniki&nbsp;DCT&nbsp;i&nbsp;zwracająca&nbsp;pierwsze&nbsp;sześć<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w&nbsp;kolejności&nbsp;zig-zag<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;M&nbsp;&nbsp;macierz,&nbsp;której&nbsp;współczynniki&nbsp;będziemy&nbsp;liczyć<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[]&nbsp;&nbsp;&nbsp;lista&nbsp;współczynników&nbsp;w&nbsp;kolejności&nbsp;zig-zag&nbsp;(pierwsze&nbsp;sześć)<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix.round<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.multiply<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;round</tt></dd></dl>
+ <dl><dt><a name="-intTobin"><strong>intTobin</strong></a>(liczba, bity, znak<font color="#909090">=1</font>)</dt><dd><tt>Funkcja&nbsp;intTobin<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Konwersja&nbsp;integera&nbsp;na&nbsp;postać&nbsp;binarną&nbsp;(str)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ograniczeniem&nbsp;jest&nbsp;długość&nbsp;liczby&nbsp;binarnej<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liczba&nbsp;&nbsp;liczba&nbsp;do&nbsp;przekonwertowania<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;długość&nbsp;liczby&nbsp;binarnej<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;znak&nbsp;&nbsp;&nbsp;&nbsp;informacja&nbsp;czy&nbsp;rezerwować&nbsp;jeden&nbsp;bit&nbsp;na&nbsp;znak<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integer&nbsp;w&nbsp;postaci&nbsp;binarnej<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.replace<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format</tt></dd></dl>
+ <dl><dt><a name="-kodujDCTJPEG"><strong>kodujDCTJPEG</strong></a>(R, apka)</dt><dd><tt>Funkcja&nbsp;kodujDCTJPEG<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kodowanie&nbsp;dwuwymiarowej&nbsp;tablicy&nbsp;o&nbsp;elementach&nbsp;numpy.matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;zapisanie&nbsp;w&nbsp;dwuwymiarowej&nbsp;tablicy&nbsp;o&nbsp;elementch&nbsp;str&nbsp;zawierająca<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zakodowane&nbsp;do&nbsp;postaci&nbsp;binarnej&nbsp;współczynniki&nbsp;DCT<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R[][]&nbsp;dwuwymiarowa&nbsp;tablica&nbsp;macierzy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QtGui.QmainWindow&nbsp;apka&nbsp;&nbsp;uchwyt&nbsp;do&nbsp;aplikacji<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str[][]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dwuwymiarowa&nbsp;tablica&nbsp;zakodowanych&nbsp;do&nbsp;postaci&nbsp;binarnej<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;współczynniów&nbsp;DCT<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;Poprawić&nbsp;opis<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cli_progress_test<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getWspDCT<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kodujWspDCT</tt></dd></dl>
+ <dl><dt><a name="-kodujWspDCT"><strong>kodujWspDCT</strong></a>(wsp, apka)</dt><dd><tt>Funkcja&nbsp;kodujWspDCT<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;kodująca&nbsp;wsp&nbsp;DCT&nbsp;na&nbsp;podaną&nbsp;liczbę bitów<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wsp[]&nbsp;lista&nbsp;współczynników&nbsp;do&nbsp;zakodowania<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QtGui.QmainWindow&nbsp;apka&nbsp;&nbsp;uchwyt&nbsp;do&nbsp;aplikacji,&nbsp;potrzebny&nbsp;do&nbsp;odczytania<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;głównej&nbsp;konfiguracji<br>
+&nbsp;<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bitowa&nbsp;reprezentacja&nbsp;podanych&nbsp;współczynników<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;usunąć&nbsp;komentarze,&nbsp;być może&nbsp;uzależnić Huffmana<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;od&nbsp;jakiegoś parametru<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;Zastanowić się czy&nbsp;potrzebny&nbsp;jest&nbsp;uchwyt&nbsp;apka<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intTobin</tt></dd></dl>
+ <dl><dt><a name="-md5Bloku"><strong>md5Bloku</strong></a>(Blok)</dt><dd><tt>Funkcja&nbsp;md5Bloku<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Obliczenie&nbsp;md5&nbsp;macierzy<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;Blok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;macierz,&nbsp;której&nbsp;md5&nbsp;obliczamy<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;md5&nbsp;macierzy<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.array.reshape<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hashlib.md5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hashlib.md5.hexdigest<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int</tt></dd></dl>
+ <dl><dt><a name="-policzWspolczynnikiDCT"><strong>policzWspolczynnikiDCT</strong></a>(ile)</dt><dd><tt>Funkcja&nbsp;policzWspolczynnikiDCT<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;obliczająca&nbsp;ile&nbsp;bitów&nbsp;z&nbsp;puli&nbsp;(int&nbsp;ile)&nbsp;należy&nbsp;poświęcić,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;na&nbsp;który&nbsp;z&nbsp;sześciu&nbsp;współczynników&nbsp;DCT<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;ile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pula&nbsp;bitów&nbsp;do&nbsp;wykorzystania<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[]&nbsp;&nbsp;&nbsp;lista&nbsp;definiująca&nbsp;ile&nbsp;bitów&nbsp;przypada&nbsp;na&nbsp;jaki&nbsp;wspołczynnik<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;math.floor</tt></dd></dl>
+ <dl><dt><a name="-porownaj"><strong>porownaj</strong></a>(R, D)</dt><dd><tt>Funkcja&nbsp;porownaj<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;porownująca&nbsp;dwie&nbsp;macierze,&nbsp;gdzie&nbsp;jedna&nbsp;jest&nbsp;większa&nbsp;od<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drugiej&nbsp;i&nbsp;poddana&nbsp;jest&nbsp;pewnym&nbsp;przekształceniom.<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;macierz&nbsp;wzorcowa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;macierz&nbsp;do&nbsp;porównania<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apka.progress&nbsp;&nbsp;&nbsp;pasek&nbsp;postepu<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;s&nbsp;&nbsp;&nbsp;scale&nbsp;parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;o&nbsp;&nbsp;&nbsp;luminance&nbsp;offset<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;e&nbsp;&nbsp;&nbsp;wyliczona&nbsp;różnica&nbsp;(błąd)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rozwiązać problem&nbsp;warningów&nbsp;w&nbsp;konsoli<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix.mean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;math.log<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.linalg.norm</tt></dd></dl>
+ <dl><dt><a name="-przeksztalcenie"><strong>przeksztalcenie</strong></a>(R, typ)</dt><dd><tt>Funkcja&nbsp;przeksztalcenie<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkca&nbsp;wykonująca&nbsp;przekształcenia&nbsp;afiniczna&nbsp;na&nbsp;podanej&nbsp;macierzy<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;macierz&nbsp;na&nbsp;której&nbsp;będzie&nbsp;wykonymane&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;przekształcenie<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typ&nbsp;przekształcenia&nbsp;(0-7):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0-3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lustrzane&nbsp;odbicie<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;-&nbsp;brak<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;-&nbsp;obrót&nbsp;o&nbsp;90&nbsp;stopni&nbsp;w&nbsp;prawo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;-&nbsp;obrót&nbsp;o&nbsp;180&nbsp;stopni&nbsp;w&nbsp;prawo<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;-&nbsp;obrót&nbsp;o&nbsp;270&nbsp;stopni&nbsp;w&nbsp;prawo<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;macierz&nbsp;po&nbsp;przekształceniach<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.rot90<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.fliplr</tt></dd></dl>
+ <dl><dt><a name="-przesunGora"><strong>przesunGora</strong></a>(A, n<font color="#909090">=4</font>)</dt><dd><tt>Funkcja&nbsp;przesunGora<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;przesuwająca&nbsp;macierz&nbsp;o&nbsp;n&nbsp;wierszy&nbsp;do&nbsp;góry<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;A&nbsp;&nbsp;macierz&nbsp;do&nbsp;przesunięcia<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;&nbsp;wartość&nbsp;przesunięcia<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;przesunięta&nbsp;macierz<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix</tt></dd></dl>
+ <dl><dt><a name="-przesunLewo"><strong>przesunLewo</strong></a>(A, n<font color="#909090">=4</font>)</dt><dd><tt>Funkcja&nbsp;przesunGora<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;przesuwająca&nbsp;macierz&nbsp;o&nbsp;n&nbsp;kolumn&nbsp;w&nbsp;lewo<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;A&nbsp;&nbsp;macierz&nbsp;do&nbsp;przesunięcia<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n&nbsp;&nbsp;wartość&nbsp;przesunięcia<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;przesunięta&nbsp;macierz<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix</tt></dd></dl>
+ <dl><dt><a name="-rangeBlocks"><strong>rangeBlocks</strong></a>(A, blockSize)</dt><dd><tt>Funkcja&nbsp;rangeBlocks<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;dzieląca&nbsp;macierz&nbsp;A&nbsp;na&nbsp;podmacierze&nbsp;o&nbsp;podanym&nbsp;rozmiarze<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;niezachodzące&nbsp;na&nbsp;siebie<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwraca&nbsp;listę&nbsp;dwuwymiarową&nbsp;podmacierzy<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;macierz&nbsp;do&nbsp;podzielenia<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blockSize&nbsp;&nbsp;rozmiar&nbsp;bloku<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;list[][]&nbsp;&nbsp;&nbsp;dwuwymiarowa&nbsp;lista<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list.append</tt></dd></dl>
+ <dl><dt><a name="-skaluj"><strong>skaluj</strong></a>(D)</dt><dd><tt>Funkcja&nbsp;skaluj<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;skalująca&nbsp;macierz&nbsp;poprzez&nbsp;uśrednienie&nbsp;czwórek&nbsp;pikseli<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zwraca&nbsp;przeskalowaną&nbsp;macierz<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;D&nbsp;&nbsp;macierz&nbsp;do&nbsp;przeskalowania<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;przeskalowana&nbsp;macierz<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list.append<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix.mean</tt></dd></dl>
+ <dl><dt><a name="-sprawdzmd5Bloku"><strong>sprawdzmd5Bloku</strong></a>(Blok)</dt><dd><tt>Funkcja&nbsp;sprawdzmd5Bloku<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;sprawdzająca,&nbsp;czy&nbsp;hash&nbsp;macierzy&nbsp;się zgadza.&nbsp;Hash&nbsp;jest&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zapisany&nbsp;w&nbsp;macierzy<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;Blok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blok,&nbsp;którego&nbsp;poprawność&nbsp;chcemy&nbsp;sprawdzić<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list[<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;informacje&nbsp;o&nbsp;poprawności&nbsp;"1"-dobrze,&nbsp;"-1"-źle<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blok&nbsp;z&nbsp;wyczyszczonymi&nbsp;2&nbsp;LSB<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wiadomość&nbsp;zapisana&nbsp;na&nbsp;2&nbsp;LSB<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;usun2LSB<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zapiszWiadomosc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;md5Bloku</tt></dd></dl>
+ <dl><dt><a name="-usun2LSB"><strong>usun2LSB</strong></a>(R)</dt><dd><tt>Funkcja&nbsp;usun2LSB<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;zerująca&nbsp;dwa&nbsp;najmniej&nbsp;znaczące&nbsp;bity&nbsp;dla&nbsp;każdej&nbsp;komórki<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;podanej&nbsp;macierzy<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;R&nbsp;&nbsp;macierz&nbsp;do&nbsp;wyzerowania&nbsp;bitów<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;[<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;macierz&nbsp;z&nbsp;wyzerowanymi&nbsp;bitami<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wiadomosc&nbsp;&nbsp;wartosci&nbsp;odczytane&nbsp;z&nbsp;2&nbsp;LSB<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int</tt></dd></dl>
+ <dl><dt><a name="-zapiszWiadomosc"><strong>zapiszWiadomosc</strong></a>(R, wiadomosc)</dt><dd><tt>Funkcja&nbsp;zapiszWiadomosc<br>
+&nbsp;<br>
+Opis:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Funkcja&nbsp;zapisująca&nbsp;wiadomość&nbsp;na&nbsp;2LSB&nbsp;macierzy<br>
+&nbsp;<br>
+Argumenty:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;R&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;macierz,&nbsp;w&nbsp;której&nbsp;zapisujemy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wiadomosc&nbsp;&nbsp;wiadomosc,&nbsp;którą&nbsp;zapisujemy.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wymagany&nbsp;format&nbsp;binarny<br>
+&nbsp;<br>
+Printy:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Return:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix&nbsp;&nbsp;&nbsp;&nbsp;macierz&nbsp;z&nbsp;zapisaną&nbsp;wiadomością<br>
+&nbsp;<br>
+Todo:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;brak<br>
+&nbsp;<br>
+Użyte&nbsp;funkcje:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.matrix<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>zmienne</strong> = {'oMax': 2047, 'sMax': 31}</td></tr></table>
+</body></html>
