@@ -67,6 +67,12 @@ class SEFR_GUI(QtGui.QMainWindow):
 		checkAction.setStatusTip('Znak wodny')
 		checkAction.triggered.connect(self.check)
 		
+		#Pomoc - Konfiguracja
+		helpAction = QtGui.QAction(QtGui.QIcon(''), 'Po&moc', self)        
+		helpAction.setShortcut('Ctrl+M')
+		helpAction.setStatusTip('Ustawienia')
+		helpAction.triggered.connect(self.helpDialog)
+		
 		#Menubar
 		menubar = self.menuBar()
 		
@@ -84,6 +90,7 @@ class SEFR_GUI(QtGui.QMainWindow):
 		
 		#Menubar - pomoc
 		helpMenu = menubar.addMenu('P&omoc') 
+		helpMenu.addAction(helpAction) 
 		
 		#Toolbar
 		toolbar = self.addToolBar('Toolbar')
@@ -295,6 +302,8 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		grid.addWidget(self.dctSldr, 10,1)
 		grid.addWidget(self.dctSpnb, 10,2)
 		grid.addWidget(hashLbl, 11,0)
+		self.hashSldr.setDisabled(1)
+		self.hashSpnb.setDisabled(1)
 		grid.addWidget(self.hashSldr, 11,1)
 		grid.addWidget(self.hashSpnb, 11,2)
 		
@@ -303,8 +312,11 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		self.bitSum = QtGui.QLineEdit('%i' %(self.przeliczBity()), self)
 		self.bitSum.setDisabled(1)
 		
+		self.infolab = QtGui.QLabel('');
+		
 		grid.addWidget(self.bitSumPodpis, 12,0)
 		grid.addWidget(self.bitSum, 12,1)
+		grid.addWidget(self.infolab, 13,1)
 		
 		self.zmienConfig(0)
 		self.conf2.resize(400, 400)
@@ -313,6 +325,29 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		conf.move(300, 300)
 		conf.setWindowTitle('Ustawienia')
 		conf.show()
+
+	def helpDialog(self):
+		"""
+		Okno konfiguracyjne
+		"""
+		pomoc = QtGui.QMainWindow(self)
+		self.pomoc = QtGui.QWidget(pomoc)
+		label = QtGui.QLabel('SEFR - Self-embedding fragile watermarking\nbased on DCT and fast fractal coding\n\
+Aplikacja ma posłużyć do dodawania znaków wodnych \ndo obrazów (jak na razie tylko PGM)\n\
+oraz odzyskiwania pierwotnej ich formy\npo jakimkolwiek uszkodzeniu\n\n\
+Autorzy: Dominik Rosiek i Piotr Ścibor');
+		
+		#siatka
+		grid = QtGui.QGridLayout(self.pomoc)
+		grid.setSpacing(10)
+		
+		grid.addWidget(label, 1,0);
+		self.pomoc.resize(360, 200)
+		
+		pomoc.resize(360, 200)
+		pomoc.move(300, 300)
+		pomoc.setWindowTitle('Pomoc')
+		pomoc.show()
 
 	def getConfig(self):
 		"""
@@ -442,6 +477,18 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		"""
 		Przelicz wszystkie bity
 		"""
+		try:
+			if not (self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["suma"] 
+				+ self.config["profile"][self.config["profil"]]["bity"]["DCT1"] 
+				+ self.config["profile"][self.config["profil"]]["bity"]["DCT2"] 
+				+ self.config["profile"][self.config["profil"]]["bity"]["hash"] == 128):
+					self.infolab.setText("Suma bitów ma wynosić 128")
+					self.infolab.adjustSize()
+			else:
+				self.infolab.setText("");
+				self.infolab.adjustSize()
+		except:
+			None
 		return self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["suma"] \
 			+ self.config["profile"][self.config["profil"]]["bity"]["DCT1"] \
 			+ self.config["profile"][self.config["profil"]]["bity"]["DCT2"] \
