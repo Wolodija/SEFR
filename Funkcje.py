@@ -615,7 +615,7 @@ def dekodujDCT(M):
 	R[1,0] = M[2]*quant;
 	R[2,0] = M[3]*quant;
 	R[1,1] = M[4]*quant;
-	R[1,2] = M[5]*quant;
+	R[0,2] = M[5]*quant;
 	R = (numpy.multiply(R, Q)).round()
 	N = (T.H*R*T).round()+128
 	return N;
