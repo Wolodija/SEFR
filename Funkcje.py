@@ -214,16 +214,16 @@ def porownaj(R,D):
 	D_ = D.mean();
 	try: #Wystepuje problem z nieskonczonoscia
 		s = (numpy.array(R-R_)*numpy.array(D-D_)).sum() / (numpy.array(D-D_)*numpy.array(D-D_)).sum()
-#		if s < -zmienne["sMax"]:
-#			s=-zmienne["sMax"];
-#		elif s>zmienne["sMax"]:
-#			s=zmienne["sMax"];
+		if s < -zmienne["sMax"]:
+			s=-zmienne["sMax"];
+		elif s>zmienne["sMax"]:
+			s=zmienne["sMax"];
 		o = R_ - s*D_;
-#		if o > zmienne["oMax"]:
-#			o=zmienne["oMax"]
-#		elif o<-zmienne["oMax"]:
-#			o=-zmienne["oMax"]
-		E = math.log(numpy.linalg.norm(R*(s*D+o)))
+		if o > zmienne["oMax"]:
+			o=zmienne["oMax"]
+		elif o<-zmienne["oMax"]:
+			o=-zmienne["oMax"]
+		E = math.log(numpy.linalg.norm(R-(s*D+o)))
 		return [s, o, E]
 	except:
 		return [0, 0, 2e15]

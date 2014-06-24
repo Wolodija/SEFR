@@ -1,4 +1,10 @@
 Projekt SEFR na Telekomunikację cyfrową.
 Autorzy:		Dominik Rosiek, Piotr Ścibor
 Data rozpoczęcia:	2014.03.31
-Jężyk wykonania:	Python3.2
+Jężyk wykonania:	Python3
+
+
+main.py - plik uruchamiający
+Funkcje.py - zbiór funkcji programu
+gui.py - silnik całej aplikacji
+psnr.py - plik deveolperski do wykonywania testów. Nie jest oficjalną częścią projektu
