@@ -765,7 +765,7 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 		if im.size[0] % 8 or im.size[1] % 8:		
 			self.print_("Obrazy o wymiarach niepodzielnych przez 8 nie są obsługiwane")
 			return -1
-
+		self.print_("Rozpoczynamy sprawdzanie");
 		blockSize = 8
 		#delta = 128;
 		if(im.size[0] > im.size[1]):
