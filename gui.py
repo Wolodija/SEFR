@@ -975,7 +975,7 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 					tamp4[2*x+1][(2*y+1) % (2*R_size[1])] = tmp
 					tamp4[2*x+1][(2*y+2) % (2*R_size[1])] = tmp
 					
-		self.print_("No to jazda")
+		self.print_("Sklejanie")
 		for i in range(2*R_size[0]):
 			for j in range(2*R_size[1]):
 #				print(tamp1[i][j], tamp2[i][j], tamp3[i][j], tamp4[i][j])
@@ -1037,9 +1037,9 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 				H[8*i:8*i+8, 8*j:8*j+8] = C_[i][j]
 		#H = H.reshape([im.size[1], im.size[0]])
 		H_C = przesunLewo(H, H.shape[1]-4);
-		G = Image.fromarray(numpy.uint8(numpy.matrix(H_C)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
+		#G = Image.fromarray(numpy.uint8(numpy.matrix(H_C)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
 		#G.show()
-		G.save(nazwa + "Recover_C.pgm")
+		#G.save(nazwa + "Recover_C.pgm")
 		#H = Image.fromarray(numpy.uint8(numpy.matrix(H)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
 		#H.show()
 
@@ -1049,9 +1049,9 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 				H[8*i:8*i+8, 8*j:8*j+8] = B_[i][j]
 		#H = H.reshape([im.size[1], im.size[0]])
 		H_B = przesunGora(H, H.shape[0]-4);
-		G = Image.fromarray(numpy.uint8(numpy.matrix(H_B)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
+		#G = Image.fromarray(numpy.uint8(numpy.matrix(H_B)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
 		#G.show()
-		G.save(nazwa + "Recover_B.pgm")
+		#G.save(nazwa + "Recover_B.pgm")
 		#H = Image.fromarray(numpy.uint8(numpy.matrix(H)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
 		#H.show()
 				
@@ -1061,9 +1061,9 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 				H[8*i:8*i+8, 8*j:8*j+8] = R[i][j]
 		#H = H.reshape([im.size[1], im.size[0]])
 		H_A = H;
-		G = Image.fromarray(numpy.uint8(numpy.matrix(H_A)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
+		#G = Image.fromarray(numpy.uint8(numpy.matrix(H_A)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
 		#G.show()
-		G.save(nazwa + "Recover_A.pgm")
+		#G.save(nazwa + "Recover_A.pgm")
 		#H = Image.fromarray(numpy.uint8(numpy.matrix(H)))	#Wyswietlanie obrazka, nie wiem jak dziala na windowsie
 		#H.show()
 
