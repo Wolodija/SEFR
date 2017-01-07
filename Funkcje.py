@@ -140,7 +140,7 @@ def rangeBlocks(A, blockSize):
     return R
 
 
-def domainBlocks(A, blockSize, delta, apka):
+def create_domain_blocks(A, blockSize, delta, apka):
     """
     Funkcja domainBlocks
 
@@ -217,21 +217,21 @@ def porownaj(R, D):
     D = numpy.matrix(D)
     R_ = R.mean()
     D_ = D.mean()
-    try:  # Wystepuje problem z nieskonczonoscia
-        s = (numpy.array(R - R_) * numpy.array(D - D_)).sum() / (numpy.array(D - D_) * numpy.array(D - D_)).sum()
-        if s < -zmienne["sMax"]:
-            s = -zmienne["sMax"]
-        elif s > zmienne["sMax"]:
-            s = zmienne["sMax"]
-        o = R_ - s * D_
-        if o > zmienne["oMax"]:
-            o = zmienne["oMax"]
-        elif o < -zmienne["oMax"]:
-            o = -zmienne["oMax"]
-        E = math.log(numpy.linalg.norm(R - (s * D + o)))
-        return [s, o, E]
-    except:
-        return [0, 0, 2e15]
+    # try:  # Wystepuje problem z nieskonczonoscia
+    s = (numpy.array(R - R_) * numpy.array(D - D_)).sum() / (numpy.array(D - D_) * numpy.array(D - D_)).sum()
+    if s < -zmienne["sMax"]:
+        s = -zmienne["sMax"]
+    elif s > zmienne["sMax"]:
+        s = zmienne["sMax"]
+    o = R_ - s * D_
+    if o > zmienne["oMax"]:
+        o = zmienne["oMax"]
+    elif o < -zmienne["oMax"]:
+        o = -zmienne["oMax"]
+    E = math.log(numpy.linalg.norm(R - (s * D + o)) or 1)
+    return [s, o, E]
+    # except:
+    #     return [0, 0, 2e15]
 
 
 def przeksztalcenie(R, typ):
@@ -345,7 +345,7 @@ def przesunLewo(A, n=4):
     return A
 
 
-def usun2LSB(R):
+def remove_2_lsb(R):
     """
     Funkcja usun2LSB
 
@@ -427,7 +427,19 @@ def Kompresuj(R, D, delta, apka):
     """
     D_size = (len(D), len(D[0]))
     R_size = (len(R), len(R[0]))
+
+    przeksztalcenia = []
+    for a in range(D_size[0]):
+        przeksztalcenia.append([])
+        for b in range(D_size[1]):
+            przeksztalcenia[a].append([])
+            for c in range(8):
+                przeksztalcenia[a][b].append(przeksztalcenie(D[a][b], c))
+
     stat = [[[[-1, -1], [-1, -1, -1]]] * R_size[1] for i in range(R_size[0])]
+    print(R_size[0]*R_size[1]*D_size[0]*D_size[1] * 8)
+    print(D_size[0]*D_size[1])
+    print(R_size[0]*R_size[1])
     for i in range(R_size[0]):
         for j in range(R_size[1]):
             apka.progress(i * R_size[1] + j, R_size[0] * R_size[1])
@@ -435,14 +447,15 @@ def Kompresuj(R, D, delta, apka):
                 for b in range(D_size[1]):
                     D_tmp = D[a][b]
                     for c in range(8):
-                        tmp = porownaj(R[i][j], przeksztalcenie(D[a][b], c))
-                        if (stat[i][j][1][2] == -1 or stat[i][j][1][2] > tmp[
-                            2]):  # jesli nie ustawiona lub mniejszy blad, to podmien wspolczynnniki
-                            tmp.append(c)
-                            if a > 128 or a < 0 or b < 0 or b > 128:
-                                apka.print_("Zle dobrana delta, nie pomiescimy sie na 7 bitach ze wspolrzednymi")
-                                return -1
-                            stat[i][j] = [[a, b], tmp]
+                        tmp = porownaj(R[i][j], przeksztalcenia[a][b][c])
+                        tmp.append(c)
+                        # if (stat[i][j][1][2] == -1 or stat[i][j][1][2] > tmp[
+                        #     2]):  # jesli nie ustawiona lub mniejszy blad, to podmien wspolczynnniki
+                        #     tmp.append(c)
+                        #     if a > 128 or a < 0 or b < 0 or b > 128:
+                        #         apka.print_("Zle dobrana delta, nie pomiescimy sie na 7 bitach ze wspolrzednymi")
+                        #         return -1
+                        stat[i][j] = [[a, b], tmp]
 
     apka.progress(1, 1)
     apka.print_("")
@@ -555,23 +568,32 @@ def getWspDCT(M):
                       [.1913, -.4619, .4619, -.1913, -.1913, .4619, -.4619, .1913],
                       [.0975, -.2778, .4157, -.4904, .4904, -.4157, .2778, -.0975]])
 
-    Q = numpy.matrix([[16, 11, 10, 16, 24, 40, 51, 61],
-                      [12, 13, 14, 19, 26, 58, 60, 55],
-                      [14, 13, 16, 24, 40, 57, 69, 56],
-                      [16, 17, 22, 29, 51, 87, 80, 62],
-                      [18, 22, 37, 56, 68, 109, 103, 77],
-                      [24, 35, 55, 64, 81, 104, 113, 92],
-                      [49, 64, 78, 87, 103, 121, 120, 101],
-                      [72, 92, 95, 98, 112, 100, 103, 99]])
+    # Q = numpy.matrix([[16, 11, 10, 16, 24, 40, 51, 61],
+    #                   [12, 13, 14, 19, 26, 58, 60, 55],
+    #                   [14, 13, 16, 24, 40, 57, 69, 56],
+    #                   [16, 17, 22, 29, 51, 87, 80, 62],
+    #                   [18, 22, 37, 56, 68, 109, 103, 77],
+    #                   [24, 35, 55, 64, 81, 104, 113, 92],
+    #                   [49, 64, 78, 87, 103, 121, 120, 101],
+    #                   [72, 92, 95, 98, 112, 100, 103, 99]])
 
-    Q_10 = numpy.matrix([[80, 60, 50, 80, 120, 200, 255, 255],
-                         [55, 60, 70, 95, 130, 255, 255, 255],
-                         [70, 65, 80, 120, 200, 255, 255, 255],
-                         [70, 85, 110, 145, 255, 255, 255, 255],
-                         [90, 110, 185, 255, 255, 255, 255, 255],
-                         [120, 175, 255, 255, 255, 255, 255, 255],
-                         [245, 255, 255, 255, 255, 255, 255, 255],
-                         [255, 255, 255, 255, 255, 255, 255, 255]])
+    Q = numpy.matrix([[3, 2, 2, 3, 5, 8, 10, 12],
+                      [2, 2, 3, 4, 5, 12, 12, 11],
+                      [3, 3, 3, 5, 8, 11, 14, 11],
+                      [3, 3, 4, 6, 10, 18, 16, 12],
+                      [4, 4, 7, 11, 14, 22, 21, 15],
+                      [5, 7, 11, 13, 16, 12, 23, 18],
+                      [10, 13, 16, 17, 21, 24, 24, 21],
+                      [14, 18, 19, 20, 22, 20, 20, 20],])
+
+    # Q_10 = numpy.matrix([[80, 60, 50, 80, 120, 200, 255, 255],
+    #                      [55, 60, 70, 95, 130, 255, 255, 255],
+    #                      [70, 65, 80, 120, 200, 255, 255, 255],
+    #                      [70, 85, 110, 145, 255, 255, 255, 255],
+    #                      [90, 110, 185, 255, 255, 255, 255, 255],
+    #                      [120, 175, 255, 255, 255, 255, 255, 255],
+    #                      [245, 255, 255, 255, 255, 255, 255, 255],
+    #                      [255, 255, 255, 255, 255, 255, 255, 255]])
 
     D = T * (M - 128) * T.H
     C = (numpy.matrix(D) / Q).round()
@@ -615,14 +637,23 @@ def dekodujDCT(M):
                       [.1913, -.4619, .4619, -.1913, -.1913, .4619, -.4619, .1913],
                       [.0975, -.2778, .4157, -.4904, .4904, -.4157, .2778, -.0975]])
 
-    Q = numpy.matrix([[16, 11, 10, 16, 24, 40, 51, 61],
-                      [12, 13, 14, 19, 26, 58, 60, 55],
-                      [14, 13, 16, 24, 40, 57, 69, 56],
-                      [16, 17, 22, 29, 51, 87, 80, 62],
-                      [18, 22, 37, 56, 68, 109, 103, 77],
-                      [24, 35, 55, 64, 81, 104, 113, 92],
-                      [49, 64, 78, 87, 103, 121, 120, 101],
-                      [72, 92, 95, 98, 112, 100, 103, 99]])
+    # Q = numpy.matrix([[16, 11, 10, 16, 24, 40, 51, 61],
+    #                   [12, 13, 14, 19, 26, 58, 60, 55],
+    #                   [14, 13, 16, 24, 40, 57, 69, 56],
+    #                   [16, 17, 22, 29, 51, 87, 80, 62],
+    #                   [18, 22, 37, 56, 68, 109, 103, 77],
+    #                   [24, 35, 55, 64, 81, 104, 113, 92],
+    #                   [49, 64, 78, 87, 103, 121, 120, 101],
+    #                   [72, 92, 95, 98, 112, 100, 103, 99]])
+
+    Q = numpy.matrix([[3, 2, 2, 3, 5, 8, 10, 12],
+                      [2, 2, 3, 4, 5, 12, 12, 11],
+                      [3, 3, 3, 5, 8, 11, 14, 11],
+                      [3, 3, 4, 6, 10, 18, 16, 12],
+                      [4, 4, 7, 11, 14, 22, 21, 15],
+                      [5, 7, 11, 13, 16, 12, 23, 18],
+                      [10, 13, 16, 17, 21, 24, 24, 21],
+                      [14, 18, 19, 20, 22, 20, 20, 20],])
     quant = 1
     R = numpy.matrix(Q) * 0
     R[0, 0] = M[0] * quant
@@ -636,7 +667,7 @@ def dekodujDCT(M):
     return N
 
 
-def policzWspolczynnikiDCT(ile):
+def compute_dct_coeff(ile):
     """
     Funkcja policzWspolczynnikiDCT
 
@@ -662,7 +693,10 @@ def policzWspolczynnikiDCT(ile):
     ret = [math.floor(ile / 7), math.floor(ile / 7), math.floor(ile / 7), math.floor(ile / 7), math.floor(ile / 7),
            math.floor(ile / 7)]
     ile -= math.floor(ile / 7) * 6
-    for i in [0, 5, 1, 2, 0, 4, 0, 5, 1, 2, 4, 0, 5, 1, 2, 4, 0, 5, 1, 2, 4, 0, 5, 1, 2, 4]:
+    # for i in [0, 5, 1, 2, 0, 4, 0, 5, 1, 2, 4, 0, 5, 1, 2, 4, 0, 5, 1, 2, 4, 0, 5, 1, 2, 4]:
+    for i in [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5,
+              0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5,
+              0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5]:
         if ile > 0:
             ret[i] += 1
         else:
@@ -671,7 +705,7 @@ def policzWspolczynnikiDCT(ile):
     return ret
 
 
-def kodujWspDCT(wsp, apka):
+def code_dct_coeff(wsp, apka):
     """
     Funkcja kodujWspDCT
 
@@ -698,37 +732,7 @@ def kodujWspDCT(wsp, apka):
     Użyte funkcje:
         intTobin
     """
-    """
-    #Wspolczynniki DCT metodą Huffmana
-    ret = ''
-    
-    if abs(wsp[3]) > 31 or abs(wsp[4]) > 31 or abs(wsp[5]):
-        ret = '1'
-    else:
-        ret = '0'
-
-    for i in range(len(wsp)):
-        if (ret[0:1] == '0' and i <3) or (ret[0:1] == '1' and i>2):
-            ret = '%s%s' %(ret, format(wsp[i], '+07b'))
-        else:
-            ret = '%s%s' %(ret, format(wsp[i], '+06b'))
-        #	if abs(wsp[i])>=32:
-        #		print([y, wsp, ret])
-        #		print("error")
-        #		sys.exit()
-    ret = ret.replace('+','0').replace('-', '1')
-    if(len(ret) > 32):
-        print(wsp)
-    return ret""""""
-	ret = Huffman(wsp[0])
-	for i in range(1, len(wsp)):
-		ret += Huffman(wsp[i] - wsp[i-1])
-		#ret += Huffman(wsp[i])
-	if(len(ret)>40):
-		print(wsp)
-	ret += '0000000000000000000000000000'
-	return ret[0:40]"""
-    maks = policzWspolczynnikiDCT(apka.config["profile"][apka.config["profil"]]["bity"]["DCT1"])
+    maks = compute_dct_coeff(apka.config["profile"][apka.config["profil"]]["bity"]["DCT1"])
     ret = ''
     ret += intTobin(wsp[0], maks[0])  # format(, '+0%ib' %maks[0]).replace('+','0').replace('-','1')
     ret += intTobin(wsp[1], maks[1])  # format(wsp[1], '+0%ib' %maks[1]).replace('+','0').replace('-','1')
@@ -773,80 +777,11 @@ def dekodujWspDCT(wsp, ile, apka):
         policzWspolczynnikiDCT
         binariaToDec
     """
-    """
-    #Wspolczynniki DCT metodą Huffmana
-    ret = []
-    wsp += '0'*ile*2
-    for i in range(ile):
-        if wsp[0:2] == '00':
-            wsp=wsp[2:]
-            dodaj = 0
-            ile = 0
-        if wsp[0:3] == '010':
-            wsp=wsp[3:]
-            dodaj = 1
-            ile = 1
-        if wsp[0:3] == '011':
-            wsp=wsp[3:]
-            dodaj = 3
-            ile = 2
-        if wsp[0:3] == '100':
-            wsp=wsp[3:]
-            dodaj = 7
-            ile = 3
-        if wsp[0:3] == '101':
-            wsp=wsp[3:]
-            dodaj = 15
-            ile = 4
-        if wsp[0:3] == '110':
-            wsp=wsp[3:]
-            dodaj = 31
-            ile = 5
-        if wsp[0:4] == '1110':
-            wsp=wsp[4:]
-            dodaj = 63
-            ile = 6
-        if wsp[0:5] == '11110':
-            wsp=wsp[5:]
-            dodaj = 127
-            ile = 7
-        if wsp[0:6] == '111110':
-            wsp=wsp[6:]
-            dodaj = 255
-            ile = 8
-        if wsp[0:7] == '1111110':
-            wsp=wsp[7:]
-            dodaj = 511
-            ile = 9
-        if wsp[0:8] == '11111110':
-            wsp=wsp[8:]
-            dodaj = 1023
-            ile = 10
-        if wsp[0:9] == '111111110':
-            wsp=wsp[9:]
-            dodaj = 2047
-            ile = 11
-            
-        
-        if ile == 0:
-            liczba = 0
-        else:
-            liczba = int(wsp[1:1+ile], 2)
-            if(wsp[0:1] == '0'):
-                liczba = -liczba + dodaj
-            else:
-                liczba = -dodaj + liczba
-        wsp = wsp[1+ile:]
-        if(i == 0):
-            ret.append(liczba)
-        else:
-            ret.append(liczba + ret[i-1])
-    return ret"""
-    maks = policzWspolczynnikiDCT(apka.config["profile"][apka.config["profil"]]["bity"]["DCT2"])
+    maks = compute_dct_coeff(apka.config["profile"][apka.config["profil"]]["bity"]["DCT2"])
     return binariaToDec(wsp, [[maks[0], 1], [maks[1], 1], [maks[2], 1], [maks[3], 1], [maks[4], 1], [maks[5], 1]])
 
 
-def kodujDCTJPEG(R, apka):
+def code_dct_jpeg(R, apka):
     """
     Funkcja kodujDCTJPEG
 
@@ -876,12 +811,12 @@ def kodujDCTJPEG(R, apka):
         getWspDCT
         kodujWspDCT
     """
-    R_size = (len(R), len(R[0]))
-    wsp = [[None] * R_size[1] for i in range(R_size[0])]
-    for i in range(R_size[0]):
-        for j in range(R_size[1]):
+    r_size = (len(R), len(R[0]))
+    wsp = [[None] * r_size[1] for _ in range(r_size[0])]
+    for i in range(r_size[0]):
+        for j in range(r_size[1]):
             apka.progress(i * len(R) + j, len(R) * len(R))
-            wsp[i][j] = kodujWspDCT(getWspDCT(R[i][j]), apka)
+            wsp[i][j] = code_dct_coeff(getWspDCT(R[i][j]), apka)
     apka.progress(1, 1)
     print("")
     return wsp
@@ -1018,7 +953,7 @@ def Huffman(liczba):
     elif absLiczba <= 2047:
         return '111111110%s%s' % (znak, format(2047 - absLiczba, '011b'))
     else:
-        return false
+        return False
 
 
 def md5Bloku(Blok):
@@ -1121,7 +1056,7 @@ def sprawdzmd5Bloku(Blok):
         zapiszWiadomosc
         md5Bloku
     """
-    tmp = usun2LSB(Blok)
+    tmp = remove_2_lsb(Blok)
     Blok = zapiszWiadomosc(tmp[0], tmp[1][0:112] + '0' * 16)
     if md5Bloku(Blok) == tmp[1][112: 128]:
         return [1, tmp[0], tmp[1]]
@@ -1203,7 +1138,7 @@ def intTobin(liczba, bity, znak=1):
         format
     """
     liczba = int(liczba)
-    if (znak):
+    if znak:
         if abs(liczba) > 2 ** (bity - 1) - 1:
             liczba /= abs(liczba)
             liczba *= 2 ** (bity - 1) - 1
