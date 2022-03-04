@@ -2,10 +2,10 @@
 gui.py
 """
 
-from PyQt4 import QtGui, QtCore
-from Funkcje import *;
+from PyQt5 import QtGui, QtCore, QtWidgets
+from Funkcje import *
 
-class SEFR_GUI(QtGui.QMainWindow):
+class SEFR_GUI(QtWidgets.QMainWindow):
 	"""
 	Klasa do obsługi aplikacji graficznej
 	"""
@@ -32,43 +32,43 @@ class SEFR_GUI(QtGui.QMainWindow):
 		Inicjalizator
 		"""
 		#Menubar - wyjście z aplikacji
-		exitAction = QtGui.QAction(QtGui.QIcon('exit-icon.png'), '&Wyjście', self)        
+		exitAction = QtWidgets.QAction(QtGui.QIcon('exit-icon.png'), '&Wyjście', self)
 		exitAction.setShortcut('Ctrl+Q')
 		exitAction.setStatusTip('Wyjście')
 		exitAction.triggered.connect(self.zamykamy)
 		
 		#Menubar - otwarcie pliku
-		openAction = QtGui.QAction(QtGui.QIcon('open-icon.png'), '&Otwórz plik...', self)        
+		openAction = QtWidgets.QAction(QtGui.QIcon('open-icon.png'), '&Otwórz plik...', self)
 		openAction.setShortcut('Ctrl+O')
 		openAction.setStatusTip('Otwórz')
 		openAction.triggered.connect(self.openDialog)
 		
 		#Menubar - zapisanie pliku
-		saveAction = QtGui.QAction(QtGui.QIcon('save-icon.png'), '&Zapisz plik...', self)        
+		saveAction = QtWidgets.QAction(QtGui.QIcon('save-icon.png'), '&Zapisz plik...', self)
 		saveAction.setShortcut('Ctrl+S')
 		saveAction.setStatusTip('Zapisz')
 		saveAction.triggered.connect(self.saveDialog)
 		
 		#Menubar - Konfiguracja
-		confAction = QtGui.QAction(QtGui.QIcon('conf-icon.png'), '&Ustawienia', self)        
+		confAction = QtWidgets.QAction(QtGui.QIcon('conf-icon.png'), '&Ustawienia', self)
 		confAction.setShortcut('Ctrl+U')
 		confAction.setStatusTip('Ustawienia')
 		confAction.triggered.connect(self.confDialog)
 		
 		#Menubar - Watermark
-		waterAction = QtGui.QAction(QtGui.QIcon('watermark-icon.png'), '&Dodaj znak wodny', self)        
+		waterAction = QtWidgets.QAction(QtGui.QIcon('watermark-icon.png'), '&Dodaj znak wodny', self)
 		waterAction.setShortcut('Ctrl+D')
 		waterAction.setStatusTip('Znak wodny')
 		waterAction.triggered.connect(self.dodajZnakWodny)
 		
 		#Menubar - Watermark checking
-		checkAction = QtGui.QAction(QtGui.QIcon('check-icon.png'), 'S&prawdź znak wodny', self)        
+		checkAction = QtWidgets.QAction(QtGui.QIcon('check-icon.png'), 'S&prawdź znak wodny', self)
 		checkAction.setShortcut('Ctrl+P')
 		checkAction.setStatusTip('Znak wodny')
 		checkAction.triggered.connect(self.check)
 		
 		#Pomoc - Konfiguracja
-		helpAction = QtGui.QAction(QtGui.QIcon(''), 'Po&moc', self)        
+		helpAction = QtWidgets.QAction(QtGui.QIcon(''), 'Po&moc', self)
 		helpAction.setShortcut('Ctrl+M')
 		helpAction.setStatusTip('Ustawienia')
 		helpAction.triggered.connect(self.helpDialog)
@@ -104,7 +104,7 @@ class SEFR_GUI(QtGui.QMainWindow):
 		toolbar.addAction(exitAction)
 		
 		#Progress bar
-		self.postep = QtGui.QProgressBar(self);
+		self.postep = QtWidgets.QProgressBar(self);
 		self.postep.setMinimum(0)
 		self.postep.setMaximum(100)
 		self.postep.show()
@@ -113,7 +113,7 @@ class SEFR_GUI(QtGui.QMainWindow):
 		self.postep.hide();
 		
 		#Label 1
-		label1 = QtGui.QLabel('Witaj w aplikacji do tworzenie i dodawania\n\
+		label1 = QtWidgets.QLabel('Witaj w aplikacji do tworzenie i dodawania\n\
 znaków wodnych do obrazka,\n\
 a także weryfikowania ich poprawności \n\
 i ew. odzyskiwania danych ze znaku wodnego\n\n\
@@ -124,7 +124,7 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		label1.adjustSize()
 		
 		#labelInfo
-		self.labelInfo = QtGui.QLabel('', self);
+		self.labelInfo = QtWidgets.QLabel('', self);
 		self.labelInfo.move(50, 230);
 		self.labelInfo.adjustSize();
 		self.labelInfo.hide();
@@ -144,7 +144,7 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		Pobierz plik do zapisu
 		"""
 		
-		self.plikZapisz = QtGui.QFileDialog.getSaveFileName(self, 'Zapisz plik', 
+		self.plikZapisz = QtWidgets.QFileDialog.getSaveFileName(self, 'Zapisz plik',
 				'.', 'Obrazy(PGM) (*.pgm)')
 #		print(self.plikZapisz)
 				
@@ -153,33 +153,33 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		"""
 		Pobierz plik do odczytu
 		"""
-		self.plikOtworz = QtGui.QFileDialog.getOpenFileName(self, 'Otwórz plik', 
+		self.plikOtworz = QtWidgets.QFileDialog.getOpenFileName(self, 'Otwórz plik',
 				'lena.pgm', 'Obrazy(PGM) (*.pgm)')
 				
 	def confDialog(self):
 		"""
 		Okno konfiguracyjne
 		"""
-		conf = QtGui.QMainWindow(self)
-		self.conf2 = QtGui.QWidget(conf)
+		conf = QtWidgets.QMainWindow(self)
+		self.conf2 = QtWidgets.QWidget(conf)
 		
 		#ComboBox:wybór konfiguracji
-		comboBox = QtGui.QComboBox(self)
+		comboBox = QtWidgets.QComboBox(self)
 		for i in range(len(self.config["profile"])):
 			comboBox.insertItem(i, self.config["profile"][i]["nazwa"])
 		comboBox.currentIndexChanged.connect(self.zmienConfig)
 		
 		
 		#labele
-		fraktalLbls={"podpis" : QtGui.QLabel('Kodowanie fraktalne'),
-					"x" : QtGui.QLabel('Szerokość'), 
-					"y" : QtGui.QLabel('Wysokość'), 
-					"s" : QtGui.QLabel('Scale'), 
-					"o" : QtGui.QLabel('Luminance offset'), 
-					"p" : QtGui.QLabel('Przekształcenie')}
-		dctLbl = QtGui.QLabel("Długość DCT");
-		hashLbl = QtGui.QLabel("Długość hasha");
-		passLbl = QtGui.QLabel("Hasło");
+		fraktalLbls={"podpis" : QtWidgets.QLabel('Kodowanie fraktalne'),
+					"x" : QtWidgets.QLabel('Szerokość'),
+					"y" : QtWidgets.QLabel('Wysokość'),
+					"s" : QtWidgets.QLabel('Scale'),
+					"o" : QtWidgets.QLabel('Luminance offset'),
+					"p" : QtWidgets.QLabel('Przekształcenie')}
+		dctLbl = QtWidgets.QLabel("Długość DCT");
+		hashLbl = QtWidgets.QLabel("Długość hasha");
+		passLbl = QtWidgets.QLabel("Hasło");
 		
 		#Slidery
 		try:
@@ -188,25 +188,25 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 			self.fraktalSuma
 			self.fraktalPrzk
 		except:
-			self.fraktalSldrs = {"x" : QtGui.QSlider(QtCore.Qt.Horizontal, self),
-								"y" : QtGui.QSlider(QtCore.Qt.Horizontal, self),
-								"s" : QtGui.QSlider(QtCore.Qt.Horizontal, self),
-								"o" : QtGui.QSlider(QtCore.Qt.Horizontal, self)#,
-								#"p" : QtGui.QSlider(QtCore.Qt.Horizontal, self)
+			self.fraktalSldrs = {"x" : QtWidgets.QSlider(QtCore.Qt.Horizontal, self),
+								"y" : QtWidgets.QSlider(QtCore.Qt.Horizontal, self),
+								"s" : QtWidgets.QSlider(QtCore.Qt.Horizontal, self),
+								"o" : QtWidgets.QSlider(QtCore.Qt.Horizontal, self)#,
+								#"p" : QtWidgets.QSlider(QtCore.Qt.Horizontal, self)
 								}
 								
-			self.fraktalSpnbs = {"x" : QtGui.QSpinBox(self),
-								"y" : QtGui.QSpinBox(self),
-								"s" : QtGui.QSpinBox(self),
-								"o" : QtGui.QSpinBox(self)#,
-								#"p" : QtGui.QSpinBox(self)
+			self.fraktalSpnbs = {"x" : QtWidgets.QSpinBox(self),
+								"y" : QtWidgets.QSpinBox(self),
+								"s" : QtWidgets.QSpinBox(self),
+								"o" : QtWidgets.QSpinBox(self)#,
+								#"p" : QtWidgets.QSpinBox(self)
 								}
 			
-			self.fraktalSuma = QtGui.QLineEdit('0', self)
+			self.fraktalSuma = QtWidgets.QLineEdit('0', self)
 			self.fraktalSuma.setDisabled(1)
-			self.fraktalPrzk = QtGui.QLineEdit('3', self)
+			self.fraktalPrzk = QtWidgets.QLineEdit('3', self)
 			self.fraktalPrzk.setDisabled(1)
-			self.haslo = QtGui.QLineEdit('Domyslne haslo', self)
+			self.haslo = QtWidgets.QLineEdit('Domyslne haslo', self)
 			self.haslo.textChanged.connect(self.hasloZmienione)
 			
 			for sldr in self.fraktalSldrs:
@@ -230,7 +230,7 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 			
 		
 		#siatka
-		grid = QtGui.QGridLayout(self.conf2)
+		grid = QtWidgets.QGridLayout(self.conf2)
 		grid.setSpacing(10)
 		
 		grid.addWidget(comboBox, 1,0);
@@ -262,11 +262,11 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 			self.hashSldr
 			self.hashSpnb
 		except:
-			self.dctSldr = QtGui.QSlider(QtCore.Qt.Horizontal, self);
-			self.hashSldr = QtGui.QSlider(QtCore.Qt.Horizontal, self);
+			self.dctSldr = QtWidgets.QSlider(QtCore.Qt.Horizontal, self);
+			self.hashSldr = QtWidgets.QSlider(QtCore.Qt.Horizontal, self);
 								
-			self.dctSpnb = QtGui.QSpinBox(self);
-			self.hashSpnb = QtGui.QSpinBox(self);
+			self.dctSpnb = QtWidgets.QSpinBox(self);
+			self.hashSpnb = QtWidgets.QSpinBox(self);
 								
 			self.dctSldr.setFocusPolicy(QtCore.Qt.NoFocus)
 			self.dctSldr.setTickInterval(1)
@@ -308,11 +308,11 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		grid.addWidget(self.hashSpnb, 11,2)
 		
 		
-		self.bitSumPodpis = QtGui.QLabel('Suma bitów');
-		self.bitSum = QtGui.QLineEdit('%i' %(self.przeliczBity()), self)
+		self.bitSumPodpis = QtWidgets.QLabel('Suma bitów');
+		self.bitSum = QtWidgets.QLineEdit('%i' %(self.przeliczBity()), self)
 		self.bitSum.setDisabled(1)
 		
-		self.infolab = QtGui.QLabel('');
+		self.infolab = QtWidgets.QLabel('');
 		
 		grid.addWidget(self.bitSumPodpis, 12,0)
 		grid.addWidget(self.bitSum, 12,1)
@@ -330,15 +330,15 @@ i ew. odzyskiwania danych ze znaku wodnego\n\n\
 		"""
 		Okno konfiguracyjne
 		"""
-		pomoc = QtGui.QMainWindow(self)
-		self.pomoc = QtGui.QWidget(pomoc)
-		label = QtGui.QLabel('SEFR - Self-embedding fragile watermarking\nbased on DCT and fast fractal coding\n\
+		pomoc = QtWidgets.QMainWindow(self)
+		self.pomoc = QtWidgets.QWidget(pomoc)
+		label = QtWidgets.QLabel('SEFR - Self-embedding fragile watermarking\nbased on DCT and fast fractal coding\n\
 Aplikacja ma posłużyć do dodawania znaków wodnych \ndo obrazów (jak na razie tylko PGM)\n\
 oraz odzyskiwania pierwotnej ich formy\npo jakimkolwiek uszkodzeniu\n\n\
 Autorzy: Dominik Rosiek i Piotr Ścibor');
 		
 		#siatka
-		grid = QtGui.QGridLayout(self.pomoc)
+		grid = QtWidgets.QGridLayout(self.pomoc)
 		grid.setSpacing(10)
 		
 		grid.addWidget(label, 1,0);
@@ -470,7 +470,7 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 		spaces = ' ' * (bar_length - len(hashes))
 		#sys.stdout.write("\rPostep: [{0}] {1}%     ".format(hashes + spaces, int(round(percent * 100000))/1000))
 		#sys.stdout.flush()
-		self.postep.setValue(percent*100);
+		self.postep.setValue(int(percent*100))
 		self.postep.show()
 	
 	def przeliczBity(self):
@@ -514,7 +514,7 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 				return -1;
 		
 		try:
-			im = Image.open(nazwa); 	#Odczytanie obrazu
+			im = Image.open(nazwa[0]); 	#Odczytanie obrazu
 		except IOError:
 			self.print_("Wygląda na to że plik nie jest obrazkiem")
 			return -1
@@ -698,10 +698,10 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 		try:
 			if self.plikZapisz == "":
 				self.saveDialog();
-			nazwa = self.plikZapisz;
+			nazwa = self.plikZapisz[0];
 		except:
 			self.saveDialog();
-			nazwa = self.plikZapisz;
+			nazwa = self.plikZapisz[0];
 			if nazwa == "":
 				nazwa = "Watermarked.pgm"
 		H.save(nazwa)
@@ -755,7 +755,7 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 				self.print_("Nie wybrano pliku");
 				return -1;
 		try:
-			im = Image.open(nazwa); 	#Odczytanie obrazu
+			im = Image.open(nazwa[0]); 	#Odczytanie obrazu
 		except IOError:
 			self.print_("Wygląda na to że plik nie jest obrazkiem")
 			return -1
@@ -888,7 +888,7 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 						#self.print_(len(mk[0]));
 						#self.print_(mk[12][44])
 						if mk[int(A[a][b][0]/8)][int(A[a][b][1]/8)] == 1: #Sprawdzamy czy domain blok jest ok
-							wsp2 = porownaj(R[a][b], przeksztalcenie(skaluj(A2[A[a][b][0]:A[a][b][0] + 16, A[a][b][1]:A[a][b][1] + 16]), A[a][b][4]))
+							wsp2 = porownaj(R[a][b], przeksztalcenie(skaluj(A2[int(A[a][b][0]):int(A[a][b][0]) + 16, int(A[a][b][1]):int(A[a][b][1]) + 16]), A[a][b][4]))
 							#sys.exit()
 							wsp2[0] = binariaToDec(intTobin(wsp2[0]/zmienne["sMax"]*2**(self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["s"] - 1), self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["s"], 1), [[self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["s"], 1]])[0] * zmienne["sMax"]/2**(self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["s"] - 1)
 							wsp2[1] = binariaToDec(intTobin(wsp2[1]/zmienne["oMax"]*2**(self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["o"] - 1), self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["o"], 1), [[self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["o"], 1]])[0] * zmienne["oMax"]/2**(self.config["profile"][self.config["profil"]]["bity"]["fraktal"]["o"] - 1)
@@ -995,7 +995,7 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 						and mk[int(x/8) + 1][int(y/8)] >= 0 \
 						and mk[int(x/8) +1 ][int(y/8) +1] >= 0 \
 						and mk[int(x/8)][int(y/8) + 1] >= 0:
-							R[i][j] = DekompresujPojedynczy(przeksztalcenie(skaluj(A2[x:x+16, y:y+16]), A[i][j][1][4]), A[i][j][1][2], A[i][j][1][3])
+							R[i][j] = DekompresujPojedynczy(przeksztalcenie(skaluj(A2[int(x):int(x)+16, int(y):int(y)+16]), A[i][j][1][4]), A[i][j][1][2], A[i][j][1][3])
 							A[i][j][2] = 1
 							#self.print_(i,j)
 						else:
@@ -1170,10 +1170,10 @@ Autorzy: Dominik Rosiek i Piotr Ścibor');
 		try:
 			if self.plikZapisz == "":
 				self.saveDialog();
-			nazwa = self.plikZapisz;
+			nazwa = self.plikZapisz[0];
 		except:
 			self.saveDialog();
-			nazwa = self.plikZapisz;
+			nazwa = self.plikZapisz[0];
 			if nazwa == "":
 				nazwa = "Recovered.pgm"
 		H.save(nazwa)

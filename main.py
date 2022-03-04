@@ -6,12 +6,12 @@ Graficzna aplikacja SEFR:
 Autorzy: Dominik Rosiek & Piotr Ścibor
 """
 print("Importowanie bibliotek");
-from gui import *;
+from gui import *
 print("Biblioteki zaimportowano")
 
 def main():
     numpy.set_printoptions(threshold= 10e40)
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     Ap = SEFR_GUI()
     sys.exit(app.exec_())
 
